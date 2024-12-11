@@ -23,7 +23,7 @@ Bem-vindo ao **ContatoFácil**! Este é um sistema desenvolvido para facilitar a
 <img src="https://upload.wikimedia.org/wikipedia/commons/3/38/HTML5_Badge.svg" alt="HTML" width="50">
 <img src="https://upload.wikimedia.org/wikipedia/commons/6/62/CSS3_logo.svg" alt="CSS" width="50">
 <img src="https://upload.wikimedia.org/wikipedia/commons/d/d4/Javascript-shield.svg" alt="JavaScript" width="50">
-<img src="https://upload.wikimedia.org/wikipedia/commons/a/a8/Microsoft_SQL_Server_Logo.svg" alt="SQL Server" width="50">
+<img src="https://cdn.worldvectorlogo.com/logos/microsoft-sql-server-1.svg" alt="SQL Server" width="50">
 <img src="https://upload.wikimedia.org/wikipedia/commons/a/a1/Visual_Studio_Icon_2022.svg" alt="Visual Studio" width="50">
 </div>
 
