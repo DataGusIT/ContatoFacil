@@ -13,12 +13,21 @@ Bem-vindo ao **ContatoFácil**! Este é um sistema desenvolvido para facilitar a
 - **Cadastro de Usuários**: Permita que novos usuários se registrem no sistema.
 - **Login Seguro**: Acesso protegido para garantir a segurança das informações.
 
+---
+
 ## Tecnologias Utilizadas
 
-- **Linguagem**: C#
-- **Framework**: ASP.NET Core MVC
-- **IDE**: Visual Studio
+<div style="display: flex; gap: 10px;">
+<img src="https://cdn.worldvectorlogo.com/logos/c--4.svg" alt="C#" width="50">
+<img src="https://cdn.worldvectorlogo.com/logos/asp-net-core-1.svg" alt="ASP.NET Core MVC" width="50">
+<img src="https://cdn.worldvectorlogo.com/logos/html-1.svg" alt="HTML" width="50">
+<img src="https://cdn.worldvectorlogo.com/logos/css-3.svg" alt="CSS" width="50">
+<img src="https://cdn.worldvectorlogo.com/logos/javascript-1.svg" alt="JavaScript" width="50">
+<img src="https://cdn.worldvectorlogo.com/logos/microsoft-sql-server-1.svg" alt="SQL Server" width="50">
+<img src="https://cdn.worldvectorlogo.com/logos/visual-studio.svg" alt="Visual Studio" width="50">
+</div>
 
+---
 ## Instalação e Configuração
 
 Siga os passos abaixo para configurar o sistema:
