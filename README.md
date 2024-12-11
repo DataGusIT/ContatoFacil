@@ -75,5 +75,6 @@ Este projeto está licenciado sob a MIT License.
 ## Contato
 
 Email: g.moreno.souza05@gmail.com
-[Linkedln]((https://www.linkedin.com/in/gustavo-moreno-8a925b26a/))
+[Visite meu LinkedIn](https://www.linkedin.com/in/gustavo-moreno-8a925b26a/)
+
 
