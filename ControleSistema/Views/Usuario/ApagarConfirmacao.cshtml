@@ -1,0 +1,64 @@
+﻿@model UsuarioModel
+@{
+    ViewData["Title"] = "Confirmação apagar usuário";
+}
+
+<div class="text-center">
+    <h3>Realmente deseja apagar o usuário (@Model.Nome)?</h3>
+</div>
+
+<a class="btn btn-secondary w-100" asp-action="Index" asp-controller="Usuario" role="button">Cancelar exclusão</a>
+<a class="btn btn-danger w-100" asp-action="Apagar" asp-controller="Usuario" asp-route-id="@Model.Id" role="button">Confirmar exclusão</a>
+
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        line-height: 1.6;
+        color: #ddd;
+        margin: 0;
+        padding: 0;
+        background-color: #121212;
+    }
+
+    h3 {
+        color: #f8d7da;
+        margin-bottom: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .btn {
+        padding: 12px;
+        border-radius: 5px;
+        transition: all 0.3s ease-in-out;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        border-color: #6c757d;
+        color: #fff;
+    }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+            border-color: #545b62;
+        }
+
+    .btn-danger {
+        background-color: #dc3545;
+        border-color: #c82333;
+        color: #fff;
+    }
+
+        .btn-danger:hover {
+            background-color: #bd2130;
+            border-color: #b21f2d;
+        }
+
+    .text-warning {
+        color: #ffc107;
+    }
+</style>

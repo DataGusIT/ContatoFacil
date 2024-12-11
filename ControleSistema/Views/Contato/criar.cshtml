@@ -1,0 +1,184 @@
+﻿@model ContatoModel
+@{
+    ViewData["Title"] = "Criar Contato";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Cadastrar Contato</h1>
+</div>
+
+<form asp-controller="Contato" asp-action="Criar" method="post" onsubmit="return validateForm()">
+    <div class="form-group mb-3">
+        <label for="nome" class="form-label">Nome</label>
+        <input type="text" id="nome" name="Nome" asp-for="Nome" class="form-control" placeholder="Digite o nome do contato" oninput="validateName()" autocomplete="name">
+        <div id="nome-error" class="invalid-feedback"></div>
+        @Html.ValidationMessageFor(x => x.Nome)
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="email" class="form-label">E-mail</label>
+        <input type="email" id="email" name="Email" asp-for="Email" class="form-control" placeholder="Digite o email do contato" oninput="validateEmail()" autocomplete="email">
+        <div id="email-error" class="invalid-feedback"></div>
+        @Html.ValidationMessageFor(x => x.Email)
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="telefone" class="form-label">Telefone</label>
+        <input type="text" id="telefone" name="Telefone" asp-for="Telefone" class="form-control" placeholder="Digite o telefone do contato" oninput="formatPhoneNumber()" autocomplete="tel">
+        <div id="telefone-error" class="invalid-feedback"></div>
+        @Html.ValidationMessageFor(x => x.Telefone)
+    </div>
+
+    <div class="form-group mb-3">
+        <button type="submit" class="btn btn-success w-100">Adicionar</button>
+    </div>
+    <div class="form-group mb-3">
+        <a class="btn btn-danger w-100" asp-controller="Contato" asp-action="Index" role="button">Voltar</a>
+    </div>
+</form>
+
+<script>
+    function validateName() {
+        const nameInput = document.getElementById('nome');
+        const nameValue = nameInput.value;
+        const regex = /^[A-Za-z\s]*$/;
+        const nameError = document.getElementById('nome-error');
+
+        if (!regex.test(nameValue)) {
+            nameError.textContent = 'O nome só pode conter letras e espaços.';
+            nameInput.classList.add('is-invalid');
+        } else {
+            nameError.textContent = '';
+            nameInput.classList.remove('is-invalid');
+        }
+    }
+
+    function validateEmail() {
+        const emailInput = document.getElementById('email');
+        const emailError = document.getElementById('email-error');
+
+        if (!emailInput.validity.valid) {
+            emailError.textContent = 'Por favor, insira um e-mail válido.';
+            emailInput.classList.add('is-invalid');
+        } else {
+            emailError.textContent = '';
+            emailInput.classList.remove('is-invalid');
+        }
+    }
+
+    function validateForm() {
+        validateName();
+        validateEmail();
+        const phoneInput = document.getElementById('telefone');
+        const phoneError = document.getElementById('telefone-error');
+        let isValid = true;
+
+        const phonePattern = /^\(\d{2}\) \d{5}-\d{4}|\(\d{2}\) \d{4}-\d{4}$/;
+        if (!phonePattern.test(phoneInput.value)) {
+            phoneError.textContent = 'O telefone deve ter o formato (XX) XXXXX-XXXX ou (XX) XXXX-XXXX.';
+            phoneInput.classList.add('is-invalid');
+            isValid = false;
+        } else {
+            phoneError.textContent = '';
+            phoneInput.classList.remove('is-invalid');
+        }
+
+        return isValid;
+    }
+
+    function formatPhoneNumber() {
+        const phoneInput = document.getElementById('telefone');
+        let phoneValue = phoneInput.value.replace(/\D/g, '');
+
+        if (phoneValue.length > 11) {
+            phoneValue = phoneValue.slice(0, 11);
+        }
+
+        if (phoneValue.length <= 2) {
+            phoneInput.value = `(${phoneValue}`;
+        } else if (phoneValue.length <= 6) {
+            phoneInput.value = `(${phoneValue.slice(0, 2)}) ${phoneValue.slice(2)}`;
+        } else {
+            phoneInput.value = `(${phoneValue.slice(0, 2)}) ${phoneValue.slice(2, 7)}-${phoneValue.slice(7, 11)}`;
+        }
+    }
+</script>
+
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        line-height: 1.6;
+        color: #ddd;
+        margin: 0;
+        padding: 0;
+        background-color: #121212;
+    }
+
+    h1 {
+        color: #f8f9fa;
+        margin-bottom: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-label {
+        color: #f1f1f1;
+    }
+
+    .form-control {
+        background-color: #2c2c2c;
+        color: #fff;
+        border: 1px solid #444;
+        transition: all 0.3s ease-in-out;
+    }
+
+        .form-control:focus {
+            background-color: #343a40;
+            border-color: #28a745;
+            box-shadow: 0 0 10px rgba(40, 167, 69, 0.3);
+        }
+
+    .is-invalid {
+        border-color: #ff4f4f;
+        box-shadow: 0 0 10px rgba(255, 79, 79, 0.3);
+    }
+
+    .btn {
+        padding: 12px;
+        border-radius: 5px;
+        transition: all 0.3s ease-in-out;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .btn-success {
+        background-color: #28a745;
+        border-color: #28a745;
+        color: #fff;
+    }
+
+        .btn-success:hover {
+            background-color: #218838;
+            border-color: #1e7e34;
+        }
+
+    .btn-danger {
+        background-color: #dc3545;
+        border-color: #dc3545;
+        color: #fff;
+    }
+
+        .btn-danger:hover {
+            background-color: #c82333;
+            border-color: #bd2130;
+        }
+
+    .invalid-feedback {
+        color: #ff4f4f;
+        font-weight: bold;
+        margin-top: 5px;
+        font-size: 0.9em;
+        transition: all 0.3s ease-in-out;
+    }
+</style>

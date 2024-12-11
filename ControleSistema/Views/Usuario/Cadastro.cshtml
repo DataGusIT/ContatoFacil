@@ -1,0 +1,283 @@
+﻿@model ControleSistema.Models.UsuarioModel
+
+@{
+    Layout = "_LayoutDeslogado";
+    ViewData["Title"] = "Cadastro de Usuário";
+}
+
+<section class="h-100 gradient-form">
+    <div class="background-animation"></div> <!-- Elemento para o efeito de fundo -->
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-xl-8 col-lg-10">
+                <div class="card rounded-4 text-white">
+                    <div class="row g-0">
+                        <div class="col-lg-12">
+                            <div class="card-body p-md-5 mx-md-4">
+                                <div class="text-center mb-4">
+                                    <img src="~/Images/ContatoFácil-removebg-preview.png"
+                                         style="width: 150px; border-radius: 50%; box-shadow: 0 4px 8px rgba(0,0,0,0.2);" alt="logo">
+                                    <h4 class="mt-1 mb-4" style="color: #f4f4f4;">Crie sua Conta</h4>
+                                </div>
+
+                                <!-- Adiciona um resumo de validação para exibir todas as mensagens de erro -->
+                               
+
+                                <form asp-controller="Usuario" asp-action="Cadastrar" method="post" onsubmit="return validateForm()">
+                                    <p style="color: #b5b5b5; text-align: center;">Preencha os campos abaixo para criar sua conta.</p>
+
+                                    <div class="form-outline mb-4">
+                                        <input type="text" asp-for="Nome" id="nome" class="form-control"
+                                               placeholder="Seu nome" style="background-color: #2c2c2c; color: #f4f4f4; border: 1px solid #444; border-radius: 8px;"
+                                               oninput="validateName()" />
+                                        <label class="form-label" for="nome" style="color: #ffab00;">Nome</label>
+                                        <div id="nome-error" class="invalid-feedback"></div> 
+                                        <!-- Mensagem de erro para nome -->
+                                        @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <input type="email" asp-for="Email" id="email" class="form-control"
+                                               placeholder="Seu email" style="background-color: #2c2c2c; color: #f4f4f4; border: 1px solid #444; border-radius: 8px;"
+                                               oninput="validateEmail()" />
+                                        <label class="form-label" for="email" style="color: #ffab00;">Email</label>
+                                        <div id="email-error" class="invalid-feedback"></div>
+                                        <!-- Exibe mensagem de erro para o campo de email -->
+                                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <input type="text" asp-for="Login" id="login" class="form-control"
+                                               placeholder="Seu usuário" style="background-color: #2c2c2c; color: #f4f4f4; border: 1px solid #444; border-radius: 8px;"
+                                               oninput="validateLogin()" />
+                                        <label class="form-label" for="login" style="color: #ffab00;">Usuário</label>
+                                        <div id="login-error" class="invalid-feedback"></div>
+                                        <!-- Mensagem de erro para o campo de login -->
+                                        @Html.ValidationMessageFor(model => model.Login, "", new { @class = "text-danger" })
+
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <input type="password" asp-for="Senha" id="senha" class="form-control"
+                                               placeholder="Sua senha" style="background-color: #2c2c2c; color: #f4f4f4; border: 1px solid #444; border-radius: 8px;" />
+                                        <label class="form-label" for="senha" style="color: #ffab00;">Senha</label>
+                                        @Html.ValidationMessageFor(model => model.Senha, "", new { @class = "text-danger" })
+                                    </div>
+
+                                    <div class="text-center pt-1 mb-5 pb-1">
+                                        <button class="btn btn-warning btn-block fa-lg gradient-custom-2 mb-3"
+                                                style="background-color: #ffab00; border: none; border-radius: 8px; padding: 10px 20px; transition: background-color 0.3s, transform 0.3s;"
+                                                type="submit">
+                                            Cadastrar
+                                        </button>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2024 Sistema de Cadastro de Contatos. Todos os direitos reservados.</p>
+    <p>
+        <a href="privacidade.html">Política de Privacidade</a> |
+        <a href="termos.html">Termos de Uso</a>
+    </p>
+    <p>Desenvolvido por:</p>
+    <div style="display: flex; justify-content: center; gap: 20px;">
+        <div style="text-align: center;">
+            <p>Gustavo Moreno Souza</p>
+            <a href="https://github.com/DevGusIT" target="_blank">
+                <i class="fab fa-github"></i> GitHub
+            </a>
+            <a href="https://www.linkedin.com/in/gustavo-moreno-8a925b26a/" target="_blank">
+                <i class="fab fa-linkedin"></i> LinkedIn
+            </a>
+        </div>
+        <div style="text-align: center;">
+            <p>Fábio Gilberto Rigote</p>
+            <a href="https://github.com/FabioRigote" target="_blank">
+                <i class="fab fa-github"></i> GitHub
+            </a>
+            <a href="https://www.linkedin.com/in/fabio-gilberto-rigote-5b3a98292/" target="_blank">
+                <i class="fab fa-linkedin"></i> LinkedIn
+            </a>
+        </div>
+    </div>
+</footer>
+
+<script>
+    function validateName() {
+        const nameInput = document.getElementById('nome');
+        const nameValue = nameInput.value;
+        const regex = /^[A-Za-z\s]*$/;
+        const nameError = document.getElementById('nome-error');
+
+        if (!regex.test(nameValue)) {
+            nameError.textContent = 'O nome só pode conter letras e espaços.';
+            nameInput.classList.add('is-invalid'); // Adiciona a classe para indicar erro visualmente
+        } else {
+            nameError.textContent = '';
+            nameInput.classList.remove('is-invalid');
+        }
+    }
+
+    function validateEmail() {
+        const emailInput = document.getElementById('email');
+        const emailError = document.getElementById('email-error');
+
+        // Verificação do e-mail usando validação de formato
+        if (!emailInput.validity.valid) {
+            emailError.textContent = 'Por favor, insira um e-mail válido.';
+            emailInput.classList.add('is-invalid');
+        } else {
+            emailError.textContent = '';
+            emailInput.classList.remove('is-invalid');
+        }
+    }
+
+    function validateForm() {
+        validateName(); // Chama a função para validar o nome durante a submissão
+        validateEmail(); // Chama a função para validar o e-mail durante a submissão
+
+        const nameInput = document.getElementById('nome');
+        const emailInput = document.getElementById('email');
+        const nameError = document.getElementById('nome-error');
+        const emailError = document.getElementById('email-error');
+
+        // Verifica se há erros
+        if (nameError.textContent || emailError.textContent) {
+            return false; // Bloqueia a submissão do formulário
+        }
+
+        // Adicione mais validações aqui se necessário
+
+        return true; // Permite a submissão do formulário
+    }
+
+    function validateLogin() {
+        const loginInput = document.getElementById('login');
+        const loginValue = loginInput.value;
+        const loginError = document.getElementById('login-error');
+
+        // Verifique se o valor do login não está vazio
+        if (loginValue.trim() === '') {
+            loginError.textContent = 'O campo de usuário não pode estar vazio.';
+            loginInput.classList.add('is-invalid');
+        } else {
+            loginError.textContent = '';
+            loginInput.classList.remove('is-invalid');
+        }
+    }
+
+
+</script>
+
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        line-height: 1.6;
+        color: #ddd;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(135deg, #121212 0%, #1e1e1e 50%, #ffab00 100%);
+        background-size: 400% 400%;
+        animation: waveBackground 15s ease infinite;
+    }
+
+    @@keyframes waveBackground {
+        0% {
+            background-position: 0% 50%;
+        }
+
+        50% {
+            background-position: 100% 50%;
+        }
+
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
+    .card {
+        background-color: rgba(30, 30, 30, 0.8); /* Fundo semi-transparente da card */
+    }
+
+    footer {
+        text-align: center;
+        margin-top: 40px;
+        padding: 20px 0;
+        background-color: #1e1e1e;
+        color: #ddd;
+        border-top: 1px solid #333;
+    }
+
+    footer p {
+        margin: 5px 0;
+    }
+
+    footer a {
+        margin: 0 10px;
+        text-decoration: none;
+        color: #ffab00;
+    }
+
+    footer a:hover {
+        text-decoration: underline;
+        color: #fff;
+    }
+
+    .form-control {
+        background-color: #2c2c2c; /* Fundo dos campos de entrada */
+        color: #f4f4f4; /* Cor do texto dos campos de entrada */
+    }
+
+    .form-label {
+        color: #ffab00; /* Cor dos rótulos dos campos */
+    }
+
+    .btn-primary {
+        background-color: #ffab00; /* Cor do botão */
+        border: none;
+    }
+
+    .is-invalid {
+        border-color: #ff4f4f;
+        box-shadow: 0 0 10px rgba(255, 79, 79, 0.3);
+    }
+
+    .invalid-feedback {
+        color: #ff4f4f;
+        font-weight: bold;
+        margin-top: 5px;
+        font-size: 0.9em;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .btn-success {
+        background-color: #28a745;
+        border-color: #28a745;
+        color: #fff;
+    }
+
+    .btn-success:hover {
+        background-color: #218838;
+        border-color: #1e7e34;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        border-color: #dc3545;
+        color: #fff;
+    }
+
+    .btn-danger:hover {
+        background-color: #c82333;
+        border-color: #bd2130;
+    }
+</style>

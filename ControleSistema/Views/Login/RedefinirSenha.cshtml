@@ -1,0 +1,106 @@
+﻿@model RedefinirSenhaModel
+@{
+    Layout = "_LayoutDeslogado";
+    ViewData["Title"] = "Redefinir Senha";
+}
+
+@if (TempData["MensagemErro"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <i class="fas fa-exclamation-circle"></i> @TempData["MensagemErro"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<section class="h-100 gradient-form">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-xl-6">
+                <div class="card rounded-3 text-white" style="background-color: #1e1e1e; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);">
+                    <div class="card-body p-md-5 mx-md-4">
+                        <h3 class="text-center" style="color: #ffab00;">Redefinir Senha</h3>
+
+                        <form asp-controller="Login" asp-action="EnviarLinkParaRedefinirSenha" method="post">
+                            <div class="form-outline mb-4">
+                                <input type="text" asp-for="Login" id="login" class="form-control" placeholder="Digite seu login" style="background-color: #2c2c2c; color: #f4f4f4;" />
+                                <label class="form-label" for="login" style="color: #ffab00;">Login</label>
+                                @Html.ValidationMessageFor(x => x.Login)
+                            </div>
+
+                            <div class="form-outline mb-4">
+                                <input type="email" asp-for="Email" id="email" class="form-control" placeholder="Digite seu e-mail" style="background-color: #2c2c2c; color: #f4f4f4;" />
+                                <label class="form-label" for="email" style="color: #ffab00;">E-mail</label>
+                                @Html.ValidationMessageFor(x => x.Email)
+                            </div>
+
+                            
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary btn-block" style="background-color: #ffab00; border: none; box-shadow: 0 5px 10px rgba(255, 171, 0, 0.5); transition: transform 0.2s;">Redefinir Senha</button>
+                                <!-- <a class="btn btn-secondary btn-block" asp-action="Index" asp-controller="Login" role="button" style="margin-top: 10px;">Voltar</a> -->
+                            </div>
+                            
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, #121212 0%, #1e1e1e 50%, #ffab00 100%);
+        background-size: 400% 400%;
+        animation: waveBackground 15s ease infinite;
+    }
+
+    @@keyframes waveBackground {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    .btn:hover {
+        transform: scale(1.05);
+    }
+
+    .form-control {
+        border: 1px solid #555;
+        transition: box-shadow 0.2s ease-in-out;
+    }
+
+    .form-control:focus {
+        box-shadow: 0 0 10px rgba(255, 171, 0, 0.5);
+    }
+
+    .btn-block {
+        padding: 10px 20px;
+        transition: background-color 0.3s ease, transform 0.2s;
+    }
+
+    .btn-block:hover {
+        background-color: #ffab00;
+        transform: scale(1.05);
+    }
+
+    .card {
+        background-color: #1e1e1e;
+        border: none;
+        border-radius: 10px;
+    }
+
+    .card-body {
+        padding: 2rem;
+        color: #ddd;
+    }
+
+    label {
+        margin-top: 10px;
+    }
+
+    .form-outline {
+        margin-bottom: 1.5rem;
+    }
+</style>

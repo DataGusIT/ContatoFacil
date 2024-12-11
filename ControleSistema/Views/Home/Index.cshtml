@@ -1,0 +1,232 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap">
+    <link rel="stylesheet" href="style.css">
+    <title>Cadastro de Contatos</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #ddd;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(270deg, #121212, #333333, #1e1e1e);
+            background-size: 600% 600%;
+            animation: gradientBackground 12s ease infinite;
+        }
+
+        @@keyframes gradientBackground {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px 0;
+            background-color: #1e1e1e;
+            color: #ddd;
+            border-top: 1px solid #333;
+        }
+
+            footer p {
+                margin: 5px 0;
+            }
+
+            footer a {
+                margin: 0 10px;
+                text-decoration: none;
+                color: #ffab00;
+            }
+
+                footer a:hover {
+                    text-decoration: underline;
+                    color: #fff;
+                }
+
+        header {
+            padding: 0;
+            margin: 0;
+            color: #fff;
+            background-color: #1e1e1e;
+        }
+
+        header .container {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        .banner {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            display: block;
+            border-bottom: 4px solid #333;
+        }
+
+        main {
+            padding: 40px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            color: #e0e0e0;
+            margin-top: 0;
+            padding: 20px;
+            background-color: #2c2c2c;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            font-size: 2em;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .content {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .content .card {
+            background-color: #1e1e1e;
+            padding: 20px;
+            margin: 15px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+            position: relative;
+        }
+
+        .content .card h3 {
+            color: #f4f4f4;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .content .card p {
+            font-size: 1.1em;
+            color: #b5b5b5;
+        }
+
+        .content .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
+        }
+
+        .content .card i {
+            font-size: 2em;
+            margin-bottom: 15px;
+            color: #ffab00;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px 0;
+            background-color: #1e1e1e;
+            color: #ddd;
+            border-top: 1px solid #333;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+        footer a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #ffab00;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <img src="~/Images/banner_contato (1).jpg" class="banner" alt="Banner">
+        </div>
+    </header>
+
+    <main>
+        <section>
+            <div class="section-title">
+                <h2>Funcionalidades</h2>
+            </div>
+            <div class="content">
+                <div class="card">
+                    <i class="fas fa-address-book"></i>
+                    <h3>Gerenciar Contatos</h3>
+                    <p>Adicione, edite e exclua contatos facilmente.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-search"></i>
+                    <h3>Busca Avançada</h3>
+                    <p>Encontre contatos rapidamente com nossa busca avançada.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-sync-alt"></i>
+                    <h3>Sincronização</h3>
+                    <p>Sincronize seus contatos com outros dispositivos.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-cogs"></i>
+                    <h3>Personalização</h3>
+                    <p>Personalize a aparência e as configurações do sistema.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Sistema de Cadastro de Contatos. Todos os direitos reservados.</p>
+        <p>
+            <a href="privacidade.html">Política de Privacidade</a> |
+            <a href="termos.html">Termos de Uso</a>
+        </p>
+        <p>Desenvolvido por:</p>
+        <div style="display: flex; justify-content: center; gap: 20px;">
+            <div style="text-align: center;">
+                <p>Gustavo Moreno Souza</p>
+                <a href="https://github.com/DevGusIT" target="_blank">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+                <a href="https://www.linkedin.com/in/gustavo-moreno-8a925b26a/" target="_blank">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+            </div>
+            <div style="text-align: center;">
+                <p>Fábio Gilberto Rigote</p>
+                <a href="https://github.com/FabioRigote" target="_blank">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+                <a href="https://www.linkedin.com/in/fabio-gilberto-rigote-5b3a98292/" target="_blank">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

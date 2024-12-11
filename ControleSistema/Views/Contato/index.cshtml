@@ -1,0 +1,193 @@
+﻿@model List<ContatoModel>
+@{
+    ViewData["Title"] = "Listagem de Contatos";
+}
+
+<!-- Estilos para a página -->
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        line-height: 1.6;
+        color: #ddd;
+        margin: 0;
+        padding: 0;
+        background-color: #121212;
+    }
+
+    .container {
+        margin-top: 50px;
+    }
+
+    h1 {
+        color: #e0e0e0;
+    }
+
+    table thead th {
+        color: #fff;
+    }
+
+    table tbody tr td {
+        color: #ddd;
+    }
+
+    .table-dark {
+        background-color: #1e1e1e;
+        border: none;
+    }
+
+    .btn-primary, .btn-outline-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+        color: #fff;
+    }
+
+        .btn-outline-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+    .btn-outline-danger {
+        color: #dc3545;
+        border-color: #dc3545;
+    }
+
+        .btn-outline-danger:hover {
+            background-color: #c82333;
+            border-color: #bd2130;
+        }
+
+    .alert-success, .alert-danger {
+        background-color: #1e1e1e;
+        color: #ddd;
+        border: 1px solid #333;
+    }
+
+        .alert-success .btn-close, .alert-danger .btn-close {
+            background-color: transparent;
+            color: #ddd;
+        }
+
+
+</style>
+
+<div class="container text-center">
+
+    <!-- Botão para adicionar novo contato -->
+    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+        <a class="btn btn-primary btn-lg" asp-controller="Contato" asp-action="Criar" role="button">
+            <i class="fas fa-plus"></i> Adicionar novo contato
+        </a>
+    </div>
+
+    <br />
+
+    <!-- Alerta de sucesso -->
+    @if (TempData["MensagemSucesso"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="fas fa-check-circle"></i> @TempData["MensagemSucesso"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <!-- Alerta de erro -->
+    @if (TempData["MensagemErro"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <i class="fas fa-exclamation-circle"></i> @TempData["MensagemErro"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <br />
+
+    <!-- Título principal -->
+    <h1 class="display-4 mb-4">Listagem de Contatos</h1>
+
+    <!-- Tabela de contatos -->
+    <div class="table-responsive">
+
+        <table id="table-contatos" class="table table-dark table-hover table-striped align-middle">
+            <thead>
+                <tr>
+                    <th scope="col" class="text-center">#</th>
+                    <th scope="col" class="text-center">Nome</th>
+                    <th scope="col" class="text-center">Email</th>
+                    <th scope="col" class="text-center">Celular</th>
+                    <th scope="col" class="text-center">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Any())
+                {
+                    foreach (var contato in Model)
+                    {
+                        <tr>
+                            <th scope="row" class="text-center">@contato.Id</th>
+                            <td class="text-center">@contato.Nome</td>
+                            <td class="text-center">@contato.Email</td>
+                            <td class ="text-center">@contato.Telefone</td>
+                            <td class="text-center">
+                                <div class="btn-group" role="group">
+                                    <a role="button" asp-action="Editar" asp-controller="Contato" asp-route-id="@contato.Id" class="btn btn-outline-primary">
+                                        <i class="fas fa-edit"></i> Editar
+                                    </a>
+                                    <a role="button" asp-action="ApagarConfirmacao" asp-controller="Contato" asp-route-id="@contato.Id" class="btn btn-outline-danger">
+                                        <i class="fas fa-trash-alt"></i> Apagar
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr class="odd"><td valign="top" colspan="5">Nenhum contato encontrado</td></tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+
+</div>
+
+<!-- Inclua jQuery e DataTables -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+<link href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" rel="stylesheet">
+
+<script>
+    $(document).ready(function () {
+        // Verifica se a tabela já foi inicializada para evitar re-inicializações
+        if ($.fn.DataTable.isDataTable('#table-contatos')) {
+            $('#table-contatos').DataTable().destroy();
+        }
+
+        // Inicializa o DataTable
+        $('#table-contatos').DataTable({
+            ajax: {
+                url: '/contato/obterTodos', // Certifique-se de que esse endpoint está correto e acessível
+                dataSrc: ''
+            },
+            columns: [
+                { data: 'id' },
+                { data: 'nome' },
+                { data: 'email' },
+                { data: 'telefone' },
+                {
+                    data: null,
+                    render: function (data, type, row) {
+                        return `<div class="btn-group" role="group">
+                                        <a role="button" href="/contato/editar/${row.id}" class="btn btn-outline-primary">
+                                            <i class="fas fa-edit"></i> Editar
+                                        </a>
+                                        <a role="button" href="/contato/apagarConfirmacao/${row.id}" class="btn btn-outline-danger">
+                                            <i class="fas fa-trash-alt"></i> Apagar
+                                        </a>
+                                    </div>`;
+                    }
+                }
+            ]
+        });
+    });
+</script>

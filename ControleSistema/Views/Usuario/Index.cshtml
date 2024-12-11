@@ -1,0 +1,156 @@
+﻿@model List<UsuarioModel>
+@{
+    ViewData["Title"] = "Listagem de Usuários";
+}
+
+<div class="text-center">
+
+    
+
+    <br />
+
+    @if (TempData["MensagemSucesso"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert" data-bs-dismiss="alert" aria-label="Close">X</button>
+            @TempData["MensagemSucesso"]
+        </div>
+    }
+
+    @if (TempData["MensagemErro"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert" data-bs-dismiss="alert" aria-label="Close">X</button>
+            @TempData["MensagemErro"]
+        </div>
+    }
+
+    <br />
+
+    <h1 class="display-4">Listagem de usuários</h1>
+
+    <table id="table-usuarios" class="table table-dark table-hover table-striped align-middle" style="width:100%">
+        <thead>
+            <tr>
+                <th scope="col" class="text-center">#</th>
+                <th scope="col" class="text-center">Nome</th>
+                <th scope="col" class="text-center">Login</th>
+                <th scope="col" class="text-center">Email</th>
+                <th scope="col" class="text-center">Total de Contatos</th>
+                <th scope="col" class="text-center">Data de cadastro</th>
+                <th scope="col" class="text-center"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (var usuario in Model)
+                {
+                    <tr>
+                        <th scope="row" class="text-center">@usuario.Id</th>
+                        <td class="text-center">@usuario.Nome</td>
+                        <td class="text-center">@usuario.Login</td>
+                        <td class="text-center">@usuario.Email</td>
+                        <td class="text-center">
+                            <a href="javascript:" usuario-id="@usuario.Id" class="btn btn-success btn-sm btn-total-contatos">
+                                @(usuario.Contatos != null && usuario.Contatos.Any() ? usuario.Contatos.Count() : 0)
+                            </a>
+                        </td>
+                        <td class="text-center">@usuario.DataCadastro</td>
+                        <td class="text-center">
+                            <div class="btn-group" role="group">
+                                <a role="button" asp-action="Editar" asp-controller="Usuario" asp-route-id="@usuario.Id" class="btn btn-primary">Editar</a>
+                                <a role="button" asp-action="ApagarConfirmacao" asp-controller="Usuario" asp-route-id="@usuario.Id" class="btn btn-danger">Apagar</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr class="odd"><td class="text-center" valign="top" colspan="7">Nenhum usuário encontrado</td></tr>
+            }
+        </tbody>
+    </table>
+
+
+    <div id="modalContatosUsuario" class="modal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Listagem de contatos</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="listaContatosUsuario"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        line-height: 1.6;
+        color: #ddd;
+        margin: 0;
+        padding: 0;
+        background-color: #121212;
+    }
+
+    .container {
+        margin-top: 50px;
+    }
+
+    h1 {
+        color: #e0e0e0;
+    }
+
+    table thead th {
+        color: #fff;
+    }
+
+    table tbody tr td {
+        color: #ddd;
+    }
+
+    .table-dark {
+        background-color: #1e1e1e;
+        border: none;
+    }
+
+    .btn-primary, .btn-outline-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+        color: #fff;
+    }
+
+        .btn-outline-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+    .btn-outline-danger {
+        color: #dc3545;
+        border-color: #dc3545;
+    }
+
+        .btn-outline-danger:hover {
+            background-color: #c82333;
+            border-color: #bd2130;
+        }
+
+    .alert-success, .alert-danger {
+        background-color: #1e1e1e;
+        color: #ddd;
+        border: 1px solid #333;
+    }
+
+        .alert-success .btn-close, .alert-danger .btn-close {
+            background-color: transparent;
+            color: #ddd;
+        }
+</style>
