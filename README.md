@@ -1,7 +1,7 @@
 # ContatoFácil
 
-![Screenshot do Sistema](![Captura de tela 2024-09-19 215510](https://github.com/user-attachments/assets/e5afde00-4038-4f8b-a9d2-babfb80fdd40)
-)
+![Captura de tela 2024-09-19 215510](https://github.com/user-attachments/assets/e5afde00-4038-4f8b-a9d2-babfb80fdd40)
+
 
 Bem-vindo ao **ContatoFácil**! Este é um sistema desenvolvido para facilitar a gestão de contatos e usuários, oferecendo recursos intuitivos e funcionais para cadastrar, editar e excluir dados com facilidade.
 
