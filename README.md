@@ -18,7 +18,7 @@ Bem-vindo ao **ContatoFácil**! Este é um sistema desenvolvido para facilitar a
 ## Tecnologias Utilizadas
 
 <div style="display: flex; gap: 10px;">
-<img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Csharp_Logo.png" alt="C#" width="50">
+<img src="https://cdn.worldvectorlogo.com/logos/c--4.svg" alt="C#" width="50">
 <img src="https://upload.wikimedia.org/wikipedia/commons/e/ee/.NET_Core_Logo.svg" alt="ASP.NET Core MVC" width="50">
 <img src="https://upload.wikimedia.org/wikipedia/commons/3/38/HTML5_Badge.svg" alt="HTML" width="50">
 <img src="https://upload.wikimedia.org/wikipedia/commons/6/62/CSS3_logo.svg" alt="CSS" width="50">
