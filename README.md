@@ -55,7 +55,25 @@ Sinta-se à vontade para contribuir com o ContatoFácil! Para isso, siga os pass
 1. Fork este repositório.
 
 2. Crie um branch para a sua feature ou correção:
-  ```bash
-   git checkout -b minha-feature
+    ```bash
+    git checkout -b minha-feature
 
+3. Faça as alterações desejadas e commit:
+    ```bash
+    git commit -m "Adicionei uma nova feature"
+
+4. Envie suas alterações:
+   ```bash
+   git push origin minha-feature
+
+5. Abra um Pull Request.
+
+## Licença
+
+Este projeto está licenciado sob a MIT License.
+
+## Contato
+
+Email: g.moreno.souza05@gmail.com
+[Linkedln]((https://www.linkedin.com/in/gustavo-moreno-8a925b26a/))
 
