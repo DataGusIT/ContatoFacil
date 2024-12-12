@@ -81,7 +81,7 @@ Sinta-se à vontade para contribuir com o ContatoFácil! Para isso, siga os pass
 ## Contato
 
 - ![Email](https://img.shields.io/badge/-Email-D14836?style=flat-square&logo=gmail&logoColor=white) g.moreno.souza05@gmail.com
-- ![LinkedIn](https://img.shields.io/badge/-LinkedIn-0077B5?style=flat-square&logo=linkedin&logoColor=white) [Meu Perfil]([https://www.linkedin.com/in/gustavo-moreno-8a925b26a/](https://www.linkedin.com/in/gustavo-moreno-8a925b26a/)
+- ![LinkedIn](https://img.shields.io/badge/-LinkedIn-0077B5?style=flat-square&logo=linkedin&logoColor=white) [Meu Perfil]([https://www.linkedin.com/in/gustavo-moreno-8a925b26a/])
 
 
 
