@@ -56,7 +56,7 @@ Siga os passos abaixo para configurar o sistema:
 
 7. Acesse o sistema através do navegador no endereço
     ```bash
-   [dotnet run](http://localhost:5000
+   http://localhost:5000
 
 ## Contribuição
 
