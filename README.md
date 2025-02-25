@@ -156,26 +156,13 @@ Adoraríamos sua contribuição para tornar o ContatoFácil ainda melhor! Siga e
    ```
 6. 🔄 **Abra um Pull Request**
 
-## 📸 Screenshots
-
-<div align="center">
-  <p><i>Imagens da interface em breve!</i></p>
-</div>
-
 ## 📬 Contato
 
-<div align="center">
+<div>
   
   [![Email](https://img.shields.io/badge/-g.moreno.souza05@gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:g.moreno.souza05@gmail.com)
   [![LinkedIn](https://img.shields.io/badge/-Gustavo_Moreno-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/gustavo-moreno-8a925b26a/)
   
 </div>
 
-## 📊 Status do Projeto
-
-<div align="center">
-  
-  ![Progresso](https://progress-bar.dev/75/?title=Concluído&width=300&color=54aeff)
-  
-</div>
 
