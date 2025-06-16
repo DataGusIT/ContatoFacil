@@ -2,7 +2,7 @@
 
 > Uma plataforma moderna e intuitiva para gestão de contatos
 
-[![Status](https://img.shields.io/badge/Status-Em%20Desenvolvimento-brightgreen)](https://github.com/seu-usuario/contatofacil)
+[![Status](https://img.shields.io/badge/Status-Finalizado-success)](https://github.com/seu-usuario/contatofacil)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![.NET](https://img.shields.io/badge/.NET-6.0+-512BD4)](https://dotnet.microsoft.com/)
 [![Contributors](https://img.shields.io/github/contributors/seu-usuario/contatofacil)](https://github.com/seu-usuario/contatofacil/graphs/contributors)
